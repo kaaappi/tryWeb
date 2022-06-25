@@ -19,14 +19,14 @@ namespace tryWeb.Controllers
     {
         private readonly ILogger<GetCourseDateController> _logger;
         private readonly Client1 _Client;
-        private readonly IDynamoDBClient _dynamoDbClient;
+        
 
 
-        public GetCourseDateController(ILogger<GetCourseDateController> logger, Client1 client, IDynamoDBClient dynamoDBClient)
+        public GetCourseDateController(ILogger<GetCourseDateController> logger, Client1 client)
         {
             _logger = logger;
             _Client = client;
-            _dynamoDbClient = dynamoDBClient;
+           
 
 
         }
@@ -36,17 +36,41 @@ namespace tryWeb.Controllers
         {
             var course = await _Client.Getcourse(valueCode, Date);
 
-            //var result = new CourseResponse
-            //{
-            //    Txt = course.FirstOrDefault().Txt,
-            //    Rate = course.FirstOrDefault().Rate.ToString(),
-            //    Cc = course.FirstOrDefault().Cc,
-            //    Exchangedate = course.FirstOrDefault().Exchangedate
-            //};
             return course;
         }
 
 
+
+
+
+
+    }
+    [ApiController]
+    [Route("[controller]")]
+    public class GetCourseController : ControllerBase
+    {
+
+
+        private readonly ILogger<GetCourseController> _logger2;
+        private readonly Client2 _Client2;
+        private readonly IDynamoDBClient _dynamoDbClient;
+
+        public GetCourseController(ILogger<GetCourseController> logger2, Client2 client2, IDynamoDBClient dynamoDBClient)
+        {
+            _logger2 = logger2;
+            _Client2 = client2;
+            _dynamoDbClient = dynamoDBClient;
+        }
+        [HttpGet("{TradingPlaceName}")]
+        public async Task<ModelCoinForBOT> GetPrice([FromRoute] string TradingPlaceName)
+        {
+            var course = await _Client2.Getprice(TradingPlaceName);
+            var result = new ModelCoinForBOT
+            {
+                Course = course.tickers.FirstOrDefault().last.ToString()
+            };
+            return result;
+        }
 
 
         [HttpGet("MarketsFromDBByID/{ID}")]
@@ -104,7 +128,7 @@ namespace tryWeb.Controllers
 
             if (result == false)
             {
-                return BadRequest("delete \"all\" error");;
+                return BadRequest("delete \"all\" error"); ;
             }
             return Ok("Sucsessful \"all\" delete for db");
 
@@ -114,31 +138,7 @@ namespace tryWeb.Controllers
 
 
 
-    }
-    [ApiController]
-    [Route("[controller]")]
-    public class GetCourseController : ControllerBase
-    {
 
-
-        private readonly ILogger<GetCourseController> _logger2;
-        private readonly Client2 _Client2;
-
-        public GetCourseController(ILogger<GetCourseController> logger2, Client2 client2)
-        {
-            _logger2 = logger2;
-            _Client2 = client2;
-        }
-        [HttpGet("{TradingPlaceName}")]
-        public async Task<ModelCoinForBOT> GetPrice([FromRoute] string TradingPlaceName)
-        {
-            var course = await _Client2.Getprice(TradingPlaceName);
-            var result = new ModelCoinForBOT
-            {
-                Course = course.tickers.FirstOrDefault().last.ToString()
-            };
-            return result;
-        }
     }
 }
 
