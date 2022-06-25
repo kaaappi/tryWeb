@@ -8,7 +8,7 @@ namespace tryWeb
     public class Constants
     {
         public static string adressNBU = "https://bank.gov.ua";
-
+        //sdfkjn
 
         public static string adressCoin = "https://api.coingecko.com";
 
