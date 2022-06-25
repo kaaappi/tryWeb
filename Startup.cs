@@ -17,7 +17,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using tryWeb.Clients;
 using tryWeb.Model;
-using tryWeb.TG_bot;
 
 namespace tryWeb
 {
@@ -40,7 +39,6 @@ namespace tryWeb
             });
             services.AddSingleton<Client1>();
             services.AddSingleton<Client2>();
-            services.AddSingleton<Class>();
 
             var credentials = new BasicAWSCredentials(Constants.AccesKey, Constants.Secret);
             var config = new AmazonDynamoDBConfig()
