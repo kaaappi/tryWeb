@@ -32,7 +32,7 @@ namespace tryWeb.Clients
             };
             var response = await _dynamoDB.GetItemAsync(item);
             var reuslt = response.Item.ToClass<DBResponse>();
-            var DESER = JsonConvert.DeserializeObject<List<string>>(reuslt.MarketName);
+            var DESER = JsonConvert.DeserializeObject<List<string>>(reuslt.MarketName.ToLower());
             if (DESER.Remove($"{MarketnameForDelete}"))
             {
                 DESER.Remove($"{MarketnameForDelete}");
@@ -95,7 +95,7 @@ namespace tryWeb.Clients
                 Item = new Dictionary<string, AttributeValue>
                 {
                     {"User.ID", new AttributeValue {S = data.UserID } },
-                    {"MarketName", new AttributeValue {S = data.MarketName } }
+                    {"MarketName", new AttributeValue {S = data.MarketName.ToLower() } }
                 }
             };
             try
