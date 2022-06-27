@@ -26,9 +26,6 @@ namespace tryWeb.Controllers
         {
             _logger = logger;
             _Client = client;
-           
-
-
         }
 
         [HttpGet("{valueCode}/{Date}")]
@@ -38,13 +35,9 @@ namespace tryWeb.Controllers
 
             return course;
         }
-
-
-
-
-
-
     }
+
+
     [ApiController]
     [Route("[controller]")]
     public class GetCourseController : ControllerBase
@@ -134,11 +127,6 @@ namespace tryWeb.Controllers
 
 
         }
-
-
-
-
-
     }
 }
 

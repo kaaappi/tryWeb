@@ -35,7 +35,5 @@ namespace tryWeb.Extensions
 
             return (T)obj;
         }
-
-
     }
 }

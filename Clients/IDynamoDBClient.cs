@@ -14,10 +14,5 @@ namespace tryWeb.Clients
         public Task<bool> PostDataToDB(ModelForDB data);
         public Task<bool> DeleteAll(string UserID);
         public Task<bool> DeleteDataDB(string UserID, string MarletNameForDelete);
-
-
-
-
-
     }
 }

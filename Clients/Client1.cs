@@ -38,8 +38,6 @@ namespace tryWeb.Clients
 
             return result;
         }
-
-        
     }
 
     public class Client2

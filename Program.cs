@@ -13,8 +13,6 @@ namespace tryWeb
     {
         public static void Main(string[] args)
         {
-            //Class Bot = new Class();
-            //Bot.Start();
             CreateHostBuilder(args).Build().Run();
         }
 

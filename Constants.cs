@@ -8,7 +8,6 @@ namespace tryWeb
     public class Constants
     {
         public static string adressNBU = "https://bank.gov.ua";
-       
 
         public static string adressCoin = "https://api.coingecko.com";
 
@@ -19,8 +18,5 @@ namespace tryWeb
         public static string Secret = "kqOA+tQRTve5fRvzcZUvMSGm1jAP7bfqQHReSmJo";
 
         public static string TableName = "test-db1";
-
-
-
     }
 }
